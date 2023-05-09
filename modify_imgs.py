@@ -17,7 +17,7 @@ images = []
 for i, file in enumerate(files):
     img = cv2.imread(f'./images/reference_50/{file}')
 
-    """# Stretch/shrink
+    # Stretch/shrink
     fx = random.choice(multipliers)
     fy = random.choice(multipliers)
     img = cv2.resize(img, None, fx = fx, fy = fy)
@@ -37,7 +37,7 @@ for i, file in enumerate(files):
     x = random.randint(0, crop_x)
     y = random.randint(0, crop_y)
     # Crop from slice  
-    img = img[y:(y+crop_height), x:(x+crop_width)]"""
+    img = img[y:(y+crop_height), x:(x+crop_width)]
 
     # Rotate
     # Randomly pick an img rotate code. Do nothing if value == 0
@@ -49,7 +49,7 @@ for i, file in enumerate(files):
     elif value == 3:
         img = cv2.rotate(img, cv2.ROTATE_90_COUNTERCLOCKWISE)
 
-    """# Brighten/Darken
+    # Brighten/Darken
     # Convert to HSV
     hsl = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     # Saturation and lightness change values
@@ -61,7 +61,7 @@ for i, file in enumerate(files):
     # Increase or decrease brightness
     hsl[:,:,2] = cv2.addWeighted(hsl[:,:,2], 1, np.zeros_like(hsl[:,:,2]), 0, l)
     # Convert back to BGR and overwrite
-    img = cv2.cvtColor(hsl, cv2.COLOR_HSV2BGR)"""
+    img = cv2.cvtColor(hsl, cv2.COLOR_HSV2BGR)
 
     images.append(img)
     print(f'Got file {i}')
